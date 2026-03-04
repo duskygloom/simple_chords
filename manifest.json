@@ -1,0 +1,32 @@
+{
+    "manifest_version": 2,
+    "name": "Simple Chords",
+    "version": "1.0",
+
+    "description": "Simplify guitar chord pages",
+
+    "homepage_url": "https://github.com/duskygloom/simple_chords",
+    
+    "icons": {
+        "48": "icons/icon_48.png",
+        "96": "icons/icon_96.png"
+    },
+
+    "permissions": ["activeTab", "scripting"],
+
+    "browser_action": {
+        "default_icon": "icons/icon_48.png",
+        "default_title": "Simplify",
+        "default_popup": "index.html"
+    },
+    
+    "browser_specific_settings": {
+    	"gecko": {
+    		"id": "@simple_guitar_chords",
+    		"data_collection_permissions": {
+    			"required": ["websiteContent"],
+    			"optional": []
+    		}
+    	}
+    }
+}
