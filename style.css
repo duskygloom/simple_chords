@@ -23,6 +23,7 @@ table {
 }
 
 button {
+    font-family: 'Sen';
     border: 0.2rem dashed brown;
     width: 8rem;
     height: 2rem;
@@ -33,11 +34,27 @@ button {
     align-self: end;
 }
 
+button:disabled {
+    background-color: lightgrey;
+    color: grey;
+    border-color: grey;
+}
+
+button:active:not(:disabled) {
+    background-color: yellow;
+    transform: scale(0.98);
+}
+
+button:hover:not(:disabled) {
+    background-color: yellow;
+}
+
 body {
     display: flex;
     flex-direction: column;
     gap: 0.6rem;
     font-family: 'Sen';
+    width: 20rem;
 }
 
 ul {
