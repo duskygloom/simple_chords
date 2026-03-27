@@ -4,8 +4,7 @@
     "chrome-types": "npm:chrome-types@^0.1.422"
   },
   "compilerOptions": {
-    "lib": [
-      "dom"
-    ]
+    "lib": ["dom"],
+    "types": ["npm:chrome-types"]
   }
 }

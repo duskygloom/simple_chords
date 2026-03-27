@@ -1,6 +1,4 @@
-import { chrome } from "chrome-types";
-
-const chordSelector = {
+const chordSelector: { [key: string]: string } = {
   "wrytin.com": "div.wrytUp",
   "indichords.com": "div#mainData",
   "chordsfactory.com": "div.entry-content",
@@ -84,6 +82,10 @@ chrome.tabs.query({ active: true, currentWindow: true })
         },
         args: [chordSelector[basename]],
       }).then((results) => {
+        if (results.length === 0) {
+          console.log("No results returned. Strange...");
+          return;
+        }
         const outer = results[0].result;
         if (outer == null) return;
         document.body.innerHTML = outer;

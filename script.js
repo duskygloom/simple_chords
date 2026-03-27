@@ -1,10 +1,10 @@
+// script.ts
 const chordSelector = {
   "wrytin.com": "div.wrytUp",
   "indichords.com": "div#mainData",
   "chordsfactory.com": "div.entry-content",
   "tabs.ultimate-guitar.com": "pre",
 };
-
 chrome.tabs.query({
   active: true,
   currentWindow: true,
@@ -16,7 +16,6 @@ chrome.tabs.query({
     );
     return;
   }
-
   const pageURL = new URL(activeTab.url);
   const basename = pageURL.hostname;
   const listTag = document.getElementById("supported-websites");
@@ -24,20 +23,17 @@ chrome.tabs.query({
     console.log("List tag not found. Was there any change in the popup HTML?");
     return;
   }
-
   for (const key in chordSelector) {
     const li = document.createElement("li");
     li.textContent = key;
     listTag.appendChild(li);
   }
-
   const nameTag = document.getElementById("website-name");
   if (nameTag == null) {
     console.log("Name tag not found. Was there any change in the popup HTML?");
     return;
   }
   nameTag.textContent = basename;
-
   const statusTag = document.getElementById("website-status");
   if (statusTag == null) {
     console.log(
@@ -46,7 +42,6 @@ chrome.tabs.query({
     return;
   }
   statusTag.textContent = `${basename in chordSelector}`;
-
   const buttonTag = document.getElementById("simple-button");
   if (buttonTag == null) {
     console.log(
@@ -54,16 +49,13 @@ chrome.tabs.query({
     );
     return;
   }
-
   if (buttonTag instanceof HTMLButtonElement) {
     buttonTag.disabled = !(basename in chordSelector);
   }
-
   if (!(basename in chordSelector)) {
     buttonTag.onclick = null;
     return;
   }
-
   buttonTag.onclick = () => {
     chrome.scripting.executeScript({
       target: {

@@ -24,6 +24,7 @@
   "workspace": {
     "dependencies": [
       "jsr:@std/assert@1",
+      "npm:chrome-types@*",
       "npm:chrome-types@~0.1.422"
     ]
   }
